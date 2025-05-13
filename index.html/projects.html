@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Andi Ashraf Hak Bisyu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="logo-square">■</span>
+            <div class="logo-text">
+                <h1>ANDI ASHRAF<br>HAK BISYU</h1>
+            </div>
+            <span class="logo-slash">/</span>
+            <span class="logo-profession">Enterpreneur</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">ABOUT ME</a></li>
+                <li><a href="resume.html">RESUME</a></li>
+                <li><a href="projects.html" class="active">PROJECTS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="projects-main">
+        <div class="projects-header">
+            <h2><span class="blue-square">■</span> Projects</h2>
+        </div>
+        
+        <div class="projects-intro">
+            <p>Disini tercatat berbagai macam project yang saya pernah kerjakan</p>
+        </div>
+        
+        <div class="projects-container">
+            <div class="project-card japanese-festival">
+                <div class="project-content">
+                    <div class="project-title">Japanese Festival</div>
+                    <div class="project-role">EVENT ORGANIZER</div>
+                    <div class="project-description">
+                        <p>Japanese Club SMAN 21 Makassar mengadakan Japanese Club Festival yang diberi nama J-FEST dengan mengangkat tema "Jembatan Seni & Budaya Bali - Kyoto" di Gedung Kesenian Makassar pada tanggal 20-22 Oktober. Kegiatan tersebut diikuti oleh Kepala Kantor Konsulat Jepang di Makassar. Acara Kolaborasi berbagai festival kegiatan di festival ini melibatkan pertunjukan J-POP, tari tradisional Jepang, dan berbagai kegiatan lainnya seperti cosplay, fashion, serta games menarik dari Jepang & Indonesia, seni pertunjukan, stand pameran, dan flashmob juga tersedia.</p>
+                        <p>Japanese Club 21 (JC-21) merupakan salah satu ekstrakurikuler di SMA Negeri 21 Makassar. JC-21 berdiri sejak tahun 2017. Awalnya, JC-21 hanyalah sebuah perkumpulan orang yang memiliki hobi yang berkaitan di SMA Negeri 21 Makassar hingga akhirnya menjadi sebuah ekstrakurikuler. JC-21 memiliki proposal dan program kerja yang terstruktur.</p>
+                        <p>Dalam kegiatan sekolah, JC-21 mengadakan pembelajaran berbagai hal tentang Jepang sebagai inti dari ekskul ini. Namun juga selalu mengadakan event-event tertentu. Festival yang ada di kota Makassar. Festival sekolah saat kemping yang menarik perhatian masyarakat dunia memiliki berbagai teknik kebudayaan. Di Jepang juga tidak hanya ada beberapa negara yang memperkenalkan hal yang sama, namun juga memperkenalkan budaya-budaya Indonesia. Terutama hubungan kerja sama yang baik antara Indonesia dan Jepang.</p>
+                    </div>
+                </div>
+                <div class="project-image" id="japaneseImageContainer">
+                    <img src="japanese-festival.jpg" alt="Japanese Festival" id="japaneseImage">
+                    <div class="upload-overlay">
+                        <label for="japaneseImageUpload" class="upload-btn">
+                            <i class="fas fa-camera"></i>
+                        </label>
+                        <input type="file" id="japaneseImageUpload" class="hidden-input" accept="image/*">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card riasin">
+                <div class="project-content">
+                    <div class="project-title">Riasin</div>
+                    <div class="project-role">PROJECT MANAGER</div>
+                    <div class="project-description">
+                        <p>Riasin mobile App adalah sebuah platform untuk penata rias dengan konsep yang unik. Platform ini berbasis pada layanan online untuk menghubungkan penata rias dengan pelanggan. Kami berusaha untuk menjawab permasalahan para penata rias dan juga memberikan layanan terlengkap dan berkualitas untuk penata rias yang ada di Indonesia.</p>
+                    </div>
+                </div>
+                <div class="project-image" id="riasinImageContainer">
+                    <img src="riasin-app.jpg" alt="Riasin App" id="riasinImage">
+                    <div class="upload-overlay">
+                        <label for="riasinImageUpload" class="upload-btn">
+                            <i class="fas fa-camera"></i>
+                        </label>
+                        <input type="file" id="riasinImageUpload" class="hidden-input" accept="image/*">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Fitur upload foto untuk Japanese Festival
+        document.addEventListener('DOMContentLoaded', function() {
+            // Japanese Festival image upload
+            const japaneseImageContainer = document.getElementById('japaneseImageContainer');
+            const japaneseImage = document.getElementById('japaneseImage');
+            const japaneseImageUpload = document.getElementById('japaneseImageUpload');
+            
+            // Tampilkan overlay saat hover
+            japaneseImageContainer.addEventListener('mouseenter', function() {
+                this.classList.add('hover');
+            });
+            
+            japaneseImageContainer.addEventListener('mouseleave', function() {
+                this.classList.remove('hover');
+            });
+            
+            // Proses upload gambar
+            japaneseImageUpload.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(event) {
+                        japaneseImage.src = event.target.result;
+                        
+                        // Simpan gambar di localStorage
+                        localStorage.setItem('japaneseImage', event.target.result);
+                    }
+                    
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+            
+            // Cek apakah ada gambar tersimpan
+            const savedJapaneseImage = localStorage.getItem('japaneseImage');
+            if (savedJapaneseImage) {
+                japaneseImage.src = savedJapaneseImage;
+            }
+            
+            // Riasin image upload
+            const riasinImageContainer = document.getElementById('riasinImageContainer');
+            const riasinImage = document.getElementById('riasinImage');
+            const riasinImageUpload = document.getElementById('riasinImageUpload');
+            
+            // Tampilkan overlay saat hover
+            riasinImageContainer.addEventListener('mouseenter', function() {
+                this.classList.add('hover');
+            });
+            
+            riasinImageContainer.addEventListener('mouseleave', function() {
+                this.classList.remove('hover');
+            });
+            
+            // Proses upload gambar
+            riasinImageUpload.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(event) {
+                        riasinImage.src = event.target.result;
+                        
+                        // Simpan gambar di localStorage
+                        localStorage.setItem('riasinImage', event.target.result);
+                    }
+                    
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+            
+            // Cek apakah ada gambar tersimpan
+            const savedRiasinImage = localStorage.getItem('riasinImage');
+            if (savedRiasinImage) {
+                riasinImage.src = savedRiasinImage;
+            }
+        });
+    </script>
+</body>
+</html>

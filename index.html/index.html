@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andi Ashraf Hak Bisyu - Entrepreneur</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="logo-square">■</span>
+            <div class="logo-text">
+                <h1>ANDI ASHRAF<br>HAK BISYU</h1>
+            </div>
+            <span class="logo-slash">/</span>
+            <span class="logo-profession">Enterpreneur</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">ABOUT ME</a></li>
+                <li><a href="resume.html">RESUME</a></li>
+                <li><a href="projects.html">PROJECTS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="about-main">
+        <div class="profile-container">
+            <div class="profile-card">
+                <div class="profile-image" id="profileImageContainer">
+                    <img src="profile-image.jpg" alt="Andi Ashraf Hak Bisyu" id="profileImage">
+                    <div class="upload-overlay">
+                        <label for="imageUpload" class="upload-btn">
+                            <i class="fas fa-camera"></i>
+                        </label>
+                        <input type="file" id="imageUpload" class="hidden-input" accept="image/*">
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <h2>ANDI<br>ASHRAF HAK<br>BISYU</h2>
+                    <div class="profile-divider"></div>
+                    <p class="profession">Enterpreneur</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-container">
+            <div class="action-buttons">
+                <a href="resume.html" class="btn btn-primary">RESUME</a>
+                <a href="projects.html" class="btn btn-secondary">PROJECTS</a>
+            </div>
+            <div class="description">
+                <p>Website ini membahas tentang portofolio saya terkait apa yang sudah saya kerjakan selama ini</p>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Fitur upload foto
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileImageContainer = document.getElementById('profileImageContainer');
+            const profileImage = document.getElementById('profileImage');
+            const imageUpload = document.getElementById('imageUpload');
+            
+            // Tampilkan overlay saat hover
+            profileImageContainer.addEventListener('mouseenter', function() {
+                this.classList.add('hover');
+            });
+            
+            profileImageContainer.addEventListener('mouseleave', function() {
+                this.classList.remove('hover');
+            });
+            
+            // Proses upload gambar
+            imageUpload.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(event) {
+                        profileImage.src = event.target.result;
+                        
+                        // Simpan gambar di localStorage
+                        localStorage.setItem('profileImage', event.target.result);
+                    }
+                    
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+            
+            // Cek apakah ada gambar tersimpan
+            const savedImage = localStorage.getItem('profileImage');
+            if (savedImage) {
+                profileImage.src = savedImage;
+            }
+        });
+    </script>
+</body>
+</html>
